@@ -3,8 +3,8 @@ Template.senseChart.created = function () {
 
     var sensors = [{
         _id: 0,
-        name: 'Sensor 1',
-        sensorId: 'sensor1',
+        name: 'Temperature',
+        sensorId: 'Temperature',
         color: '#0066FF'
     }];
     self.seriesSensors = new ReactiveVar(sensors);
@@ -32,7 +32,7 @@ Template.senseChart.rendered = function () {
 
 
 var seriesList = [{
-    name: 'Sensor 1',
+    name: 'Temperature',
 	lineWidth: 4,
     data: [],
     yAxis: 0,
@@ -46,7 +46,7 @@ var seriesList = [{
 function updateChart() {
     if (typeof (chartSensers) !== 'undefined') {
         Temperature.find({
-            typeSensor: "sensor1"
+            sensorType: "Temperature"
         }).observe({
             added: function (temperature) {
                 if (chartSensers.series.length > 0) {
@@ -94,7 +94,7 @@ function builtColumn() {
 			}
 		},
 		title: {
-			text: 'Sensor 1',
+			text: 'Temperature',
 			style: {
 				color: '#0066FF'
 				}
